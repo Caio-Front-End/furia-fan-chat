@@ -3,106 +3,115 @@ require("dotenv").config(); // Carregar variáveis do .env
 
 // Pega o token do bot do arquivo .env
 const token = process.env.TELEGRAM_TOKEN;
-console.log("Token carregado:", token);
+console.log(token);
 
 // Criação do bot com polling
 const bot = new TelegramBot(token, { polling: true });
 
-// Mensagem de boas-vindas ao iniciar o bot
+// Comando básico de início
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(
     chatId,
-    `👋 Olá, fã da FURIA!
-
-Sou seu assistente para acompanhar o time de perto.
-Aqui estão os comandos que você pode usar:
-
-🗓️ /proximojogo - Veja quando será o próximo confronto
-🧑‍🤝‍🧑 /elenco - Conheça o elenco atual
-📊 /ranking - Acompanhe a posição da FURIA nos campeonatos
-🛍️ /loja - Acesse os produtos oficiais
-📰 /noticias - Últimas notícias do time
-ℹ️ /ajuda - Saiba como usar o bot
-
-#SomosFURIA 🖤`
+    "🎮 Olá, fã da FURIA! 🦁\n\nSeja bem-vindo ao nosso bot! Eu estou aqui para te ajudar a acompanhar tudo sobre o time de Counter-Strike 2. Escolha uma das opções abaixo para ficar por dentro de tudo! 🔥\n\n" +
+      "Comandos disponíveis:\n" +
+      "/proximoJogo - Verifique o próximo jogo da FURIA 🎮\n" +
+      "/elenco - Saiba quem são os jogadores da FURIA 🧑‍💻👩‍💻\n" +
+      "/ranking - Confira o ranking atual da FURIA 🏆\n" +
+      "/loja - Acesse a loja da FURIA para comprar seus produtos oficiais 👕🛒\n" +
+      "/ajuda - Ajuda sobre os comandos do bot 📖"
   );
 });
 
-// /ajuda - Guia de uso
+// Comando de ajuda
 bot.onText(/\/ajuda/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(
     chatId,
-    `ℹ️ Este bot foi criado para manter os fãs da FURIA atualizados e conectados com o time.
-
-👉 Use os comandos a qualquer momento para acessar informações.
-
-Se tiver sugestões, mande para a equipe! 🖤
-
-#SomosFURIA`
+    "🆘 *Como posso te ajudar?*\n\n" +
+      "Eu sou um bot da FURIA, criado para te manter atualizado sobre o time de Counter-Strike 2! Aqui estão as opções disponíveis:\n\n" +
+      "*/proximoJogo* - Mostra o próximo jogo da FURIA no CS2!\n" +
+      "*/elenco* - Conheça os jogadores da FURIA, nossa linha de frente no CS2!\n" +
+      "*/ranking* - Veja o ranking atual da FURIA no campeonato de CS2!\n" +
+      "*/loja* - Vá para a loja oficial da FURIA e adquira produtos do time!\n" +
+      "*/noticias* - Receba as últimas notícias sobre a FURIA no CS2! 📰🔥\n" +
+      "Se precisar de algo mais, me avise! 🚀"
   );
 });
 
-// /proximojogo
-bot.onText(/\/proximojogo/, (msg) => {
+// Comando para mostrar o próximo jogo
+bot.onText(/\/proximoJogo/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(
     chatId,
-    "🗓️ O próximo jogo da FURIA será contra a NAVI no dia 03/05 às 16h."
+    "🎮 *Próximo jogo da FURIA no CS2!* 🦁\n\n" +
+      "O próximo desafio da FURIA será contra o time XYZ. Não perca! 🔥\n\n" +
+      "🗓️ Data: 30 de abril de 2025\n" +
+      "⏰ Hora: 16:00 (Horário de Brasília)\n" +
+      "📍 Local: Arena FURIA\n\n" +
+      "Acompanhe o jogo e vamos torcer juntos! 🏆🔥"
   );
 });
 
-// /elenco
+// Comando para mostrar o elenco
 bot.onText(/\/elenco/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(
     chatId,
-    `👥 Elenco atual da FURIA (CS2):
-- FalleN (IGL)
-- KSCERATO
-- yuurih
-- chelo
-- arT`
+    "🧑‍💻 *Elenco da FURIA - CS2* 👩‍💻\n\n" +
+      "Conheça os jogadores da FURIA, que estão dominando as competições de CS2! 💥\n\n" +
+      "🎮 *YEKINDAR* (Mareks Gaļinskis) - Rifler (Stand-in)\n" +
+      "🎮 *molodoy* (Danil Golubenko) - Sniper\n" +
+      "🎮 *yuurih* (Yuri Gomes dos Santos Boian) - Rifler\n" +
+      "🎮 *KSCERATO* (Kaike Silva Cerato) - Rifler\n" +
+      "🎮 *FalleN* (Gabriel Toledo de Alcântara Sguario) - IGL (In-Game Leader)\n\n" +
+      "🧑‍🏫 *Técnico:* Sidnei 'sidde' Macedo\n" +
+      "🎮 *Assistente Técnico:* Aydin 'krizzeN' Turlybekov (Kazakhstan)\n\n" +
+      "Juntos, eles formam uma equipe imbatível! 💥"
   );
 });
 
-// /ranking
+// Comando para mostrar o ranking
 bot.onText(/\/ranking/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(
     chatId,
-    "📊 A FURIA está atualmente na 9ª colocação no ranking mundial da HLTV."
+    "🏆 *Ranking Atual da FURIA no CS2* 🔥\n\n" +
+      "Veja como a FURIA está se saindo no campeonato de CS2!\n\n" +
+      "1️⃣ FURIA - Posição 1\n" +
+      "2️⃣ Time XYZ - Posição 2\n" +
+      "3️⃣ Time ABC - Posição 3\n\n" +
+      "Vamos continuar a luta pelo topo! 💪🦁"
   );
 });
 
-// /loja
+// Comando para acessar a loja
 bot.onText(/\/loja/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(
     chatId,
-    "🛍️ Acesse a loja oficial da FURIA: https://www.furia.gg/store"
+    "🛒 *Loja Oficial da FURIA* 🦁👕\n\n" +
+      "Acesse a nossa loja e adquira produtos exclusivos da FURIA: camisetas, bonés, mochilas e muito mais! 👕🔥\n\n" +
+      "Clique no link abaixo para acessar a loja:\n" +
+      "🛍️ [Loja FURIA](http://www.loja.furia.gg)\n\n" +
+      "Apoie o time com estilo! 💥"
   );
 });
 
-// /noticias
+// Comando para mostrar as notícias
 bot.onText(/\/noticias/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(
     chatId,
-    `
-📰 Últimas notícias da FURIA:
-
-1. FURIA vence a Imperial por 2x1 e avança no campeonato.
-2. FalleN comenta sobre o desempenho do time após vitória.
-3. Novos uniformes da FURIA são lançados em parceria com a Nike.
-
-Acompanhe tudo em: https://www.furia.gg/news
-  `
+    "📰 *Últimas Notícias da FURIA - CS2* 🔥\n\n" +
+      "Acompanhe as últimas atualizações sobre a FURIA no CS2:\n\n" +
+      "📢 *Notícia 1:* A FURIA venceu o time XYZ na última partida! 🏆\n" +
+      "📢 *Notícia 2:* O jogador X foi eleito o melhor da partida! 👏\n\n" +
+      "Fique ligado para mais atualizações! 🚀"
   );
 });
 
-// Exibir erros de polling, se ocorrerem
+// Quando o bot estiver online, o console mostrará
 bot.on("polling_error", (error) => {
-  console.log("Erro de polling:", error.code);
+  console.log(error.code); // Erros de polling
 });
