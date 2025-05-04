@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Navbar = () => {
+export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -12,7 +12,7 @@ const Navbar = () => {
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="#home" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img
-                        src="src\assets\images\Furia_Esports_logo.png"
+                        src="src\assets\images\furia-esports-seeklogo.png"
                         className="w-15 h-auto"
                         alt="Logo FURIA"
                     />
@@ -97,4 +97,3 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
