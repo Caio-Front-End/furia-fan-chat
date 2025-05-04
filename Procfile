@@ -1,1 +1,0 @@
-web: cd furia-bot && npm start
